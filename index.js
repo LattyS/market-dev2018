@@ -7,9 +7,11 @@ app.set('view engine', 'pug')
 app.set('views', 'views')
 
 const Order = require('./models/Order.model')
+const Customer = require('./models/Customer.model')
+const Product = require('./models/Product.model')
 
 app.get('/', (req, res) => {
-    Order.find().exec().then(orders => {
+    Order.find().populate('customer products').exec().then(orders => {
         res.render('index', {
             orders : orders
         })
