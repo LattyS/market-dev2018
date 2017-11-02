@@ -1,0 +1,32 @@
+extend _master
+
+block content
+    <h1>Commande n°#{order._id}</h1>
+    <hr>
+    <p>Vous êtes ici : <a href="/" title="Retour à la liste des commandes">Liste des commandes</a> <i class="glyphicon glyphicon-arrow-right"></i> <a href="/order/#{order._id}">Commande n°#{order._id}</a></p>
+    <hr>
+
+
+    <h2>Client : <a href="/customer/#{order.customer._id}" title="Voir la fiche client"><strong>#{order.customer.firstname} #{order.customer.lastname}</strong></a></h2>
+    <hr>
+
+    if order.products.length === 0
+        <h3>Aucun produit commandé</h3>
+    else
+        <h3>Produits commandés :</h3>
+
+        <table class="table table-condensed table-striped">
+            <thead>
+                <tr>
+                    <th>Titre</th>
+                    <th>Prix</th>
+                </tr>
+            </thead>
+            <tbody>
+                each product in order.products
+                    <tr>
+                        <td width="50%">#{product.title}</td>
+                        <td width="33%">#{product.price} €</td>
+                    </tr>
+            </tbody>
+        </table>

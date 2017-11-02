@@ -13,7 +13,17 @@ const Product = require('./models/Product.model')
 app.get('/', (req, res) => {
     Order.find().populate('customer products').exec().then(orders => {
         res.render('index', {
-            orders : orders
+            orders: orders
+        })
+    }).catch(err => res.render('error', {
+        message: err.message
+    }))
+})
+
+app.get('/order/:orderId', (req, res) => {
+    Order.findById(req.params.orderId).populate('customer products').exec().then(order => {
+        res.render('order', {
+            order: order
         })
     }).catch(err => res.render('error', {
         message: err.message
