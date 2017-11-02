@@ -1,0 +1,40 @@
+extend _master
+
+block content
+    <h1>Fiche client n°#{customer._id}</h1>
+    <hr>
+    <p>Vous êtes ici : <a href="/" title="Retour à la liste des commandes">Liste des commandes</a> <i class="glyphicon glyphicon-arrow-right"></i> <a href="/customer/#{customer._id}">Fiche client : #{customer.firstname} #{customer.lastname}</a></p>
+    <hr>
+
+    <figure class="pull-left">
+        <img src="#{customer.photo}" alt="Photo de #{customer.firstname} + #{customer.lastname}">
+    </figure>
+
+    <div class="pull-left">
+        <table class="table table-condensed table-striped">
+            <tr>
+                <th>Prénom</th>
+                <td>#{customer.firstname}</td>
+            </tr>
+            <tr>
+                <th>NOM</th>
+                <td>#{customer.lastname}</td>
+            </tr>
+            <tr>
+                <th>Email</th>
+                <td>#{customer.email}</td>
+            </tr>
+            <tr>
+                <th>Téléphone</th>
+                <td>#{customer.phone}</td>
+            </tr>
+            <tr>
+                <th>Date de naissance</th>
+                <td>#{customer.birthdate}</td>
+            </tr>
+            <tr>
+                <th>Lieu de résidence</th>
+                <td>#{customer.city}, #{customer.country}</td>
+            </tr>
+        </table>
+    </div>

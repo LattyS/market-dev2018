@@ -22,7 +22,9 @@ block content
                         <a href="/order/#{order._id}">#{order._id}</a>
                     </td>
                     <td width="25%">#{order.dateOrdered}</td>
-                    <td width="25%">#{order.customer.firstname} #{order.customer.lastname}</td>
+                    <td width="25%">
+                        <a href="/customer/#{order.customer._id}">#{order.customer.firstname} #{order.customer.lastname}</a>
+                    </td>
                     <td width="25%">#{order.products.length}</td>
                 </tr>
         </tbody>

@@ -30,6 +30,16 @@ app.get('/order/:orderId', (req, res) => {
     }))
 })
 
+app.get('/customer/:customerId', (req, res) => {
+    Customer.findById(req.params.customerId).exec().then(customer => {
+        res.render('customer', {
+            customer: customer
+        })
+    }).catch(err => res.render('error', {
+        message: err.message
+    }))
+})
+
 mongoose.Promise = global.Promise;
 
 mongoose
